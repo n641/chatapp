@@ -6,14 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from './screens/loginScreen';
 import RegestersScreen from './screens/regestersScreen';
+import Chatscreen from './screens/chatscreen'
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
 
 const Stack = createNativeStackNavigator();
 
@@ -21,8 +15,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="register">
-      <Stack.Screen name="register" component={RegestersScreen} />
+      <Stack.Screen name="register" component={RegestersScreen} options={{ title: 'Sign up' }} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="chat" component={Chatscreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

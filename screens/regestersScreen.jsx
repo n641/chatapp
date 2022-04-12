@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Link from '../component/link';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { register } from '../confeg/auth/auth';
 
 
 
@@ -88,7 +89,9 @@ const RegestersScreen = ({ navigation }) => {
                     />
                 </View>
                 <View style={styles.buttoncontainer}>
-                    <Button title='sign up' onPress={() => { }} color={'red'} />
+                    <Button title='sign up' onPress={()=>{
+                        register(userName,imageurl,email,password)
+                    }} color={'red'} />
                     <View style={styles.link}>
                         <Link title='I have already email'
                             onPress={() => navigation.navigate('Login')

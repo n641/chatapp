@@ -1,9 +1,10 @@
 import react, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Keyboard } from 'react-native'
 import { Ionicons } from "@expo/vector-icons";
+import { login } from '../confeg/auth/auth'
 
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [userName, setuserName] = useState('');
     const [password, setpassword] = useState('');
     const [flag, setflag] = useState(false);
@@ -32,7 +33,7 @@ const LoginScreen = () => {
                     <Ionicons name='person' size={35} />
                 </View>
                 <TextInput
-                    placeholder=' enter user name'
+                    placeholder=' enter email'
                     onChangeText={Handleusername}
                     value={userName}
                     blurOnSubmit
@@ -55,8 +56,23 @@ const LoginScreen = () => {
                 />
             </View>
             <View style={styles.buttoncontainer}>
-                <Button title='Sign IN ' onPress={() => { }} color={'red'} />
-                <Button title='sign up' onPress={() => { }} color={'red'} />
+                <Button title='Sign IN '
+                 onPress={() => {
+                    login(userName, password)
+                        .then((userCredential) => {
+                            navigation.navigate('chat')
+                            // console.log('ay 7aga');
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            alert(errorMessage);
+                        })
+                    }
+                } 
+                color={'red'} />
+
+                <Button title='sign up' color={'red'} onPress={() => navigation.navigate('register')} />
             </View>
             {/* </TouchableOpacity> */}
 
