@@ -1,12 +1,12 @@
 import react, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button , TouchableOpacity , Keyboard } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Keyboard } from 'react-native'
 import { Ionicons } from "@expo/vector-icons";
 
 
 const LoginScreen = () => {
     const [userName, setuserName] = useState('');
     const [password, setpassword] = useState('');
-    const[flag , setflag]=useState(false);
+    const [flag, setflag] = useState(false);
 
     const Handleusername = (textgoal) => {
         setuserName(textgoal);
@@ -18,10 +18,11 @@ const LoginScreen = () => {
     };
 
     return (
+
         <View style={styles.container}>
-            <TouchableOpacity onPress={()=>{
-                Keyboard.dismiss();
-            }}>
+            {/* <TouchableOpacity onPress={()=>{
+            Keyboard.dismiss();
+        }}> */}
             <View style={styles.mainIcon}>
                 <Ionicons name="chatbubbles" size={90} color={'red'} />
             </View>
@@ -40,10 +41,10 @@ const LoginScreen = () => {
             </View>
             <View style={styles.contenerInput}>
                 <View style={styles.containericon}>
-                    <TouchableOpacity onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                         setflag(!flag);
                     }}>
-                    <Ionicons name={flag?'eye-off':'eye'} size={30} />
+                        <Ionicons name={flag ? 'eye-off' : 'eye'} size={30} />
                     </TouchableOpacity>
                 </View>
                 <TextInput
@@ -57,8 +58,10 @@ const LoginScreen = () => {
                 <Button title='Sign IN ' onPress={() => { }} color={'red'} />
                 <Button title='sign up' onPress={() => { }} color={'red'} />
             </View>
-            </TouchableOpacity>
+            {/* </TouchableOpacity> */}
+
         </View>
+
     );
 }
 
